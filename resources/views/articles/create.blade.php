@@ -4,28 +4,32 @@
     <h1>Write a New Article</h1>
  
     <hr/>
- 
-<form method="POST" action="" accept-charset="UTF-8">
-    <input name="_token" type="hidden" value="pEUyvKqFqjlcEfh2lvIkGEeI3rWAAwdbgo3XicvW">
- 
-    <div class="form-group">
-        <label for="title">Title:</label>
-        <input class="form-control" name="title" type="text" id="title">
-    </div>
- 
-    <div class="form-group">
-        <label for="body">Body:</label>
-        <textarea class="form-control" name="body" cols="50" rows="10" id="body"></textarea>
-    </div>
- 
-    <div class="form-group">
-        <label for="published_at">Publish On:</label>
-        <input class="form-control" name="published_at" type="date" value="2015-03-04" id="published_at">
-    </div>
- 
-    <div class="form-group">
-        <input class="btn btn-primary form-control" type="submit" value="Add Article">
-    </div>
-</form>
 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    {!! Form::open() !!}
+        <div class="form-group">
+            {!! Form::label('title', 'Title:') !!}
+            {!! Form::text('title', null, ['class' => 'form-control']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('body', 'Body:') !!}
+            {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('published_at', 'Publish On:') !!}
+            {!! Form::input('date', 'published_at', date('Y-m-d'), ['class' => 'form-control']) !!}
+        </div>    
+        <div class="form-group">
+            {!! Form::submit('Add Article', ['class' => 'btn btn-primary form-control']) !!}
+        </div>
+    {!! Form::close() !!}
 @endsection

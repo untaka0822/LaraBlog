@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
+use App\Http\Requests\ArticleRequest;
 use App\Http\Controllers\Controller;
 use App\Article;
+use Carbon\Carbon;
  
 class ArticlesController extends Controller {
  
     public function index() {
-        $articles = Article::all();
- 
+       $articles = Article::latest('published_at')->published()->get();
         return view('articles.index', compact('articles'));
     }
  
@@ -27,14 +27,24 @@ class ArticlesController extends Controller {
         return view('articles.create');
     }
 
-    public function store() {
-        // ①フォームの入力値を取得
-        $inputs = \Request::all();
+    public function store(ArticleRequest $request) { // varlidateが不要になった
+    
+        Article::create($request->all());
  
-        // ②マスアサインメントを使って、記事をDBに作成
-        Article::create($inputs);
- 
-        // ③記事一覧へリダイレクト
         return redirect('articles');
+    }
+
+    public function edit($id) {
+        $article = Article::findOrFail($id);
+ 
+        return view('articles.edit', compact('article'));
+    }
+ 
+    public function update($id, ArticleRequest $request) {
+        $article = Article::findOrFail($id);
+ 
+        $article->update($request->all());
+ 
+        return redirect(url('articles', [$article->id]));
     }
 }

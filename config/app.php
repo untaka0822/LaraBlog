@@ -136,6 +136,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -144,10 +145,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Collective\Html\HtmlServiceProvider::class,  // 追加
+        Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
+
+    
     /*
     |--------------------------------------------------------------------------
     | Class Aliases
@@ -193,9 +196,9 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
-
-        'Form' => Collective\Html\FormFacade::class,  // 追加
-        'Html' => Collective\Html\HtmlFacade::class,  // 追加
+        'Form'      => Collective\Html\FormFacade::class,  // 追加
+        'HTML'      => Collective\Html\HtmlFacade::class,  // 追加
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 

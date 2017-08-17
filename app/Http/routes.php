@@ -11,10 +11,11 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
-Route::get('contact', 'WelcomeController@contact');
-Route::get('about', 'PagesController@about');
-Route::get('articles', 'ArticlesController@index');
+// 送信方法($_GETか$_REQUEST)
+// get
+Route::get('articles', 'ArticlesController@index'); // 前がパス、後ろが書かれている場所
 Route::get('articles/create', 'ArticlesController@create');
 Route::get('articles/{id}', 'ArticlesController@show');
-Route::post('articles', 'ArticlesController@store'); // 追加
+Route::post('articles/index', 'ArticlesController@store'); 
+Route::get('articles/{id}/edit', 'ArticlesController@edit');  // 追加
+Route::patch('articles/{id}', 'ArticlesController@update');  // 追加

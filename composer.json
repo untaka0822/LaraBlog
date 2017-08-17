@@ -48,5 +48,7 @@
         "preferred-install": "dist"
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+
+    "illuminate/html": "5.1.*"
 }
