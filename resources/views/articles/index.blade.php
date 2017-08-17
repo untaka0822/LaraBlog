@@ -6,8 +6,9 @@
     <h1>Articles</h1>
  
     <hr/>
-    
-    <a href="articles/create" class="btn btn-primary">新規作成</a>
+   
+    {!! link_to('articles/create', '新規作成', ['class' => 'btn btn-primary']) !!}
+   
     @foreach($articles as $article)
         <article>
             <h2>

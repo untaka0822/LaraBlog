@@ -145,8 +145,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Barryvdh\Debugbar\ServiceProvider::class,
-
     ],
 
 
@@ -198,7 +196,6 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => Collective\Html\FormFacade::class,  // 追加
         'HTML'      => Collective\Html\HtmlFacade::class,  // 追加
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 
